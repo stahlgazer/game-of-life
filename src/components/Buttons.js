@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useRef } from "react";
 import Switch from "@material-ui/core/Switch";
+import Button from "@material-ui/core/Button";
 import produce from "immer";
 
 let count = 0;
@@ -66,7 +67,7 @@ function Buttons(props) {
 
   return (
     <div className="Buttons">
-      <button
+      <Button
         onClick={() => {
           setRunning(!running);
           runningRef.current = true;
@@ -74,8 +75,8 @@ function Buttons(props) {
         }}
       >
         {running ? "Stop" : "Start"}
-      </button>
-      <button
+      </Button>
+      <Button
         disabled={running}
         onClick={() => {
           props.setGrid(emptyGrid);
@@ -83,8 +84,8 @@ function Buttons(props) {
         }}
       >
         Clear
-      </button>
-      <button
+      </Button>
+      <Button
         disabled={running}
         onClick={() => {
           count = 0;
@@ -98,11 +99,12 @@ function Buttons(props) {
         }}
       >
         Randomize Cells
-      </button>
+      </Button>
       <p>Generation #: {count}</p>
       <form>
         <label>Slow Speed</label>
         <Switch
+          color="secondary"
           disabled={running}
           checked={slow}
           onChange={handleSlow}
