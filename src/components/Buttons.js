@@ -101,6 +101,7 @@ function Buttons(props) {
       <form>
         <label>Slow Speed</label>
         <Switch
+          disabled={running}
           checked={slow}
           onChange={handleSlow}
           name="checked"
