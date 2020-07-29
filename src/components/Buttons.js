@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useRef } from "react";
+import Switch from "@material-ui/core/Switch";
 import produce from "immer";
 
 let count = 0;
@@ -25,7 +26,13 @@ const emptyGrid = () => {
 function Buttons(props) {
   const [running, setRunning] = useState(false);
   const runningRef = useRef(running);
+  const [speed, setSpeed] = useState(200);
+  const [slow, setSlow] = useState(false);
 
+  const handleSlow = () => {
+    setSlow(!slow);
+    speed === 200 ? setSpeed(500) : setSpeed(200);
+  };
   runningRef.current = running;
 
   const simulate = useCallback(() => {
@@ -54,8 +61,8 @@ function Buttons(props) {
         }
       });
     });
-    setTimeout(simulate, 200);
-  }, [props]);
+    setTimeout(simulate, speed);
+  }, [props, speed]);
 
   return (
     <div className="Buttons">
@@ -91,6 +98,15 @@ function Buttons(props) {
         Randomize Cells
       </button>
       <p>Generation #: {count}</p>
+      <form>
+        <label>Slow Speed</label>
+        <Switch
+          checked={slow}
+          onChange={handleSlow}
+          name="checked"
+          inputProps={{ "aria-label": "secondary checkbox" }}
+        />
+      </form>
     </div>
   );
 }
