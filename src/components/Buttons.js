@@ -76,6 +76,7 @@ function Buttons(props) {
         {running ? "Stop" : "Start"}
       </button>
       <button
+        disabled={running}
         onClick={() => {
           props.setGrid(emptyGrid);
           count = 0;
@@ -84,6 +85,7 @@ function Buttons(props) {
         Clear
       </button>
       <button
+        disabled={running}
         onClick={() => {
           count = 0;
           const rows = [];
