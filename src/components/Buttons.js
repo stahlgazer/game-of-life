@@ -67,7 +67,10 @@ function Buttons(props) {
 
   return (
     <div className="Buttons">
+      <h3>Current Generation: {count}</h3>
       <Button
+        color="primary"
+        variant="contained"
         onClick={() => {
           setRunning(!running);
           runningRef.current = true;
@@ -77,6 +80,8 @@ function Buttons(props) {
         {running ? "Stop" : "Start"}
       </Button>
       <Button
+        color="secondary"
+        variant="contained"
         disabled={running}
         onClick={() => {
           props.setGrid(emptyGrid);
@@ -86,6 +91,7 @@ function Buttons(props) {
         Clear
       </Button>
       <Button
+        variant="contained"
         disabled={running}
         onClick={() => {
           count = 0;
@@ -100,7 +106,6 @@ function Buttons(props) {
       >
         Randomize Cells
       </Button>
-      <p>Generation #: {count}</p>
       <form>
         <label>Slow Speed</label>
         <Switch

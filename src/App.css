@@ -1,10 +1,18 @@
 .App {
   text-align: center;
   margin: 0 auto;
+  margin-top: 5%;
 }
 
 .Buttons {
+  background-color: rgb(255, 255, 255, 0.7);
+  border-radius: 15px;
   margin: 0 auto;
+  max-width: 450px;
+}
+
+.Buttons Button {
+  margin: 1%;
 }
 
 .Grid {
