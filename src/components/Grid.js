@@ -14,7 +14,7 @@ function Grid() {
     }
     return rows;
   });
-  console.log(grid);
+//   console.log(grid);
   return (
     <div
       className="Grid"
@@ -42,7 +42,7 @@ function Grid() {
           />
         ))
       )}
-      <Buttons />
+      <Buttons grid={grid} setGrid={setGrid}/>
     </div>
   );
 }
