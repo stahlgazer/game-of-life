@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useRef } from "react";
 import produce from "immer";
 
+let count = 0
 const numRows = 35;
 const numCols = 35;
 const operations = [
@@ -24,11 +25,15 @@ const emptyGrid = () => {
 function Buttons(props) {
   const [running, setRunning] = useState(false);
   const runningRef = useRef(running);
+
+
   runningRef.current = running;
+
   const simulate = useCallback(() => {
     if (!runningRef.current) {
       return;
     }
+    count+=1
     props.setGrid((g) => {
       return produce(g, (gridCopy) => {
         for (let i = 0; i < numRows; i++) {
@@ -66,11 +71,13 @@ function Buttons(props) {
       </button>
       <button
         onClick={() => {
-          props.setGrid(emptyGrid)
+          props.setGrid(emptyGrid);
+          count = 0
         }}
       >
         Clear
       </button>
+      <p>Generation #: {count}</p>
     </div>
   );
 }
