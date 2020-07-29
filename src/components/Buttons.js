@@ -4,8 +4,8 @@ import Button from "@material-ui/core/Button";
 import produce from "immer";
 
 let count = 0;
-const numRows = 30;
-const numCols = 30;
+const numRows = 25;
+const numCols = 25;
 const operations = [
   [0, 1],
   [0, -1],

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import produce from "immer";
 import Buttons from "./Buttons";
 
-const numRows = 30;
-const numCols = 30;
+const numRows = 25;
+const numCols = 25;
 
 function Grid() {
   const [grid, setGrid] = useState(() => {
