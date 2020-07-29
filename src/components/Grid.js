@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import produce from "immer";
 import Buttons from "./Buttons";
 
-const numRows = 35;
-const numCols = 50;
+const numRows = 30;
+const numCols = 30;
 
 function Grid() {
   const [grid, setGrid] = useState(() => {
@@ -15,8 +15,9 @@ function Grid() {
   });
   //   console.log(grid);
   return (
-    <div className="Grid">
+    <>
       <div
+        className="Grid"
         style={{
           display: "grid",
           gridTemplateColumns: `repeat(${numCols}, 15px)`,
@@ -41,9 +42,9 @@ function Grid() {
             />
           ))
         )}
-        <Buttons grid={grid} setGrid={setGrid} />
       </div>
-    </div>
+      <Buttons grid={grid} setGrid={setGrid} />
+    </>
   );
 }
 

@@ -4,13 +4,10 @@
 }
 
 .Buttons {
-  display:flex;
   margin: 0 auto;
-  align-items:center;
-
 }
 
 .Grid {
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
 }
