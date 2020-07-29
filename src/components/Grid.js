@@ -3,7 +3,7 @@ import produce from "immer";
 import Buttons from './Buttons';
 
 const numRows = 35;
-const numCols = 35;
+const numCols = 50;
 
 function Grid() {
   

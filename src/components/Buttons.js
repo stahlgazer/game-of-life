@@ -4,7 +4,7 @@ import produce from "immer";
 
 let count = 0;
 const numRows = 35;
-const numCols = 35;
+const numCols = 50;
 const operations = [
   [0, 1],
   [0, -1],
