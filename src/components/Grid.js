@@ -37,7 +37,7 @@ function Grid() {
               width: 15,
               height: 15,
               backgroundColor: grid[i][k] ? "purple" : undefined,
-              border: "solid 1px black",
+              border: "solid 1px gray",
             }}
           />
         ))

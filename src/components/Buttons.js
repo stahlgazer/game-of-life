@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef } from "react";
 import produce from "immer";
 
-let count = 0
+let count = 0;
 const numRows = 35;
 const numCols = 35;
 const operations = [
@@ -26,14 +26,13 @@ function Buttons(props) {
   const [running, setRunning] = useState(false);
   const runningRef = useRef(running);
 
-
   runningRef.current = running;
 
   const simulate = useCallback(() => {
     if (!runningRef.current) {
       return;
     }
-    count+=1
+    count += 1;
     props.setGrid((g) => {
       return produce(g, (gridCopy) => {
         for (let i = 0; i < numRows; i++) {
@@ -72,10 +71,24 @@ function Buttons(props) {
       <button
         onClick={() => {
           props.setGrid(emptyGrid);
-          count = 0
+          count = 0;
         }}
       >
         Clear
+      </button>
+      <button
+        onClick={() => {
+          count = 0;
+          const rows = [];
+          for (let i = 0; i < numRows; i++) {
+            rows.push(
+              Array.from(Array(numCols), () => (Math.random() >= 0.5 ? 1 : 0))
+            );
+          }
+          props.setGrid(rows);
+        }}
+      >
+        Randomize Cells
       </button>
       <p>Generation #: {count}</p>
     </div>
