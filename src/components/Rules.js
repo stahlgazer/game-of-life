@@ -21,7 +21,7 @@ export default function Rules() {
   const classes = useStyles();
 
   return (
-    <Container maxWidth='sm' className={classes.root}>
+    <Container maxWidth='sm' className={`${classes.root} Rules`}>
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

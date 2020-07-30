@@ -1,13 +1,12 @@
 .App {
   text-align: center;
   margin: 0 auto;
-  margin-top: 5%;
 }
 
 .Buttons {
-  background-color: rgb(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 15px;
-  margin: 0 auto;
+  margin: 20px auto;
   max-width: 450px;
 }
 
@@ -18,4 +17,10 @@
 .Grid {
   display: flex;
   justify-content: center;
+}
+
+.Rules {
+  margin-top: 50px;
+  margin-bottom:30px;
+  opacity:.8;
 }
