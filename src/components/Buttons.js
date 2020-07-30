@@ -1,21 +1,10 @@
 import React, { useState, useCallback, useRef } from "react";
 import Switch from "@material-ui/core/Switch";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import produce from "immer";
 import { FormLabel } from "@material-ui/core";
-
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
 
 let count = 0;
 const operations = [
@@ -28,6 +17,7 @@ const operations = [
   [1, 0],
   [-1, 0],
 ];
+
 function Buttons(props) {
   const emptyGrid = () => {
     const rows = [];
@@ -153,9 +143,9 @@ function Buttons(props) {
           <MenuItem value={40}>40</MenuItem>
         </Select>
         <Button
-        style={{margin: '10px'}}
+          style={{ margin: "10px" }}
           color="primary"
-          size='small'
+          size="small"
           variant="contained"
           disabled={running}
           onClick={() => {

@@ -21,14 +21,16 @@ export default function Rules() {
   const classes = useStyles();
 
   return (
-    <Container maxWidth='sm' className={`${classes.root} Rules`}>
+    <Container maxWidth="sm" className={`${classes.root} Rules`}>
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={classes.heading}>Game of Life Introduction</Typography>
+          <Typography className={classes.heading}>
+            Game of Life Introduction
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>

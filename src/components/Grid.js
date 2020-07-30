@@ -7,10 +7,10 @@ function Grid() {
   const [colSize, setColSize] = useState(25);
   const handleCol = (e) => {
     setColSize(e.target.value);
-  }
+  };
   const handleRow = (e) => {
     setRowSize(e.target.value);
-  }
+  };
   const [grid, setGrid] = useState(() => {
     const rows = [];
     for (let i = 0; i < rowSize; i++) {
@@ -48,7 +48,14 @@ function Grid() {
           ))
         )}
       </div>
-      <Buttons grid={grid} setGrid={setGrid} rowSize={rowSize} colSize={colSize} handleCol={handleCol} handleRow={handleRow}/>
+      <Buttons
+        grid={grid}
+        setGrid={setGrid}
+        rowSize={rowSize}
+        colSize={colSize}
+        handleCol={handleCol}
+        handleRow={handleRow}
+      />
     </>
   );
 }
