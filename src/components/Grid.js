@@ -2,14 +2,19 @@ import React, { useState } from "react";
 import produce from "immer";
 import Buttons from "./Buttons";
 
-const numRows = 25;
-const numCols = 25;
-
 function Grid() {
+  const [rowSize, setRowSize] = useState(25);
+  const [colSize, setColSize] = useState(25);
+  const handleCol = (e) => {
+    setColSize(e.target.value);
+  }
+  const handleRow = (e) => {
+    setRowSize(e.target.value);
+  }
   const [grid, setGrid] = useState(() => {
     const rows = [];
-    for (let i = 0; i < numRows; i++) {
-      rows.push(Array.from(Array(numCols), () => 0));
+    for (let i = 0; i < rowSize; i++) {
+      rows.push(Array.from(Array(colSize), () => 0));
     }
     return rows;
   });
@@ -20,7 +25,7 @@ function Grid() {
         className="Grid"
         style={{
           display: "grid",
-          gridTemplateColumns: `repeat(${numCols}, 15px)`,
+          gridTemplateColumns: `repeat(${colSize}, 15px)`,
         }}
       >
         {grid.map((rows, i) =>
@@ -43,7 +48,7 @@ function Grid() {
           ))
         )}
       </div>
-      <Buttons grid={grid} setGrid={setGrid} />
+      <Buttons grid={grid} setGrid={setGrid} rowSize={rowSize} colSize={colSize} handleCol={handleCol} handleRow={handleRow}/>
     </>
   );
 }

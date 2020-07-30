@@ -1,11 +1,23 @@
 import React, { useState, useCallback, useRef } from "react";
 import Switch from "@material-ui/core/Switch";
 import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
 import produce from "immer";
+import { FormLabel } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
 let count = 0;
-const numRows = 25;
-const numCols = 25;
 const operations = [
   [0, 1],
   [0, -1],
@@ -16,15 +28,14 @@ const operations = [
   [1, 0],
   [-1, 0],
 ];
-const emptyGrid = () => {
-  const rows = [];
-  for (let i = 0; i < numRows; i++) {
-    rows.push(Array.from(Array(numCols), () => 0));
-  }
-  return rows;
-};
-
 function Buttons(props) {
+  const emptyGrid = () => {
+    const rows = [];
+    for (let i = 0; i < props.rowSize; i++) {
+      rows.push(Array.from(Array(props.colSize), () => 0));
+    }
+    return rows;
+  };
   const [running, setRunning] = useState(false);
   const runningRef = useRef(running);
   const [speed, setSpeed] = useState(200);
@@ -43,13 +54,18 @@ function Buttons(props) {
     count += 1;
     props.setGrid((g) => {
       return produce(g, (gridCopy) => {
-        for (let i = 0; i < numRows; i++) {
-          for (let k = 0; k < numCols; k++) {
+        for (let i = 0; i < props.rowSize; i++) {
+          for (let k = 0; k < props.colSize; k++) {
             let neighbors = 0;
             operations.forEach(([x, y]) => {
               const newI = i + x;
               const newK = k + y;
-              if (newI >= 0 && newI < numRows && newK >= 0 && newK < numCols) {
+              if (
+                newI >= 0 &&
+                newI < props.rowSize &&
+                newK >= 0 &&
+                newK < props.colSize
+              ) {
                 neighbors += g[newI][newK];
               }
             });
@@ -96,9 +112,11 @@ function Buttons(props) {
         onClick={() => {
           count = 0;
           const rows = [];
-          for (let i = 0; i < numRows; i++) {
+          for (let i = 0; i < props.rowSize; i++) {
             rows.push(
-              Array.from(Array(numCols), () => (Math.random() >= 0.5 ? 1 : 0))
+              Array.from(Array(props.colSize), () =>
+                Math.random() >= 0.5 ? 1 : 0
+              )
             );
           }
           props.setGrid(rows);
@@ -116,6 +134,37 @@ function Buttons(props) {
           name="checked"
           inputProps={{ "aria-label": "secondary checkbox" }}
         />
+      </form>
+      <form>
+        <FormLabel style={{ margin: "10px" }}>Amount of Rows</FormLabel>
+        <Select value={props.rowSize} onChange={props.handleRow}>
+          <MenuItem value={20}>20</MenuItem>
+          <MenuItem value={25}>25</MenuItem>
+          <MenuItem value={30}>30</MenuItem>
+          <MenuItem value={35}>35</MenuItem>
+          <MenuItem value={40}>40</MenuItem>
+        </Select>
+        <FormLabel style={{ margin: "10px" }}>Amount of Columns</FormLabel>
+        <Select value={props.colSize} onChange={props.handleCol}>
+          <MenuItem value={20}>20</MenuItem>
+          <MenuItem value={25}>25</MenuItem>
+          <MenuItem value={30}>30</MenuItem>
+          <MenuItem value={35}>35</MenuItem>
+          <MenuItem value={40}>40</MenuItem>
+        </Select>
+        <Button
+        style={{margin: '10px'}}
+          color="primary"
+          size='small'
+          variant="contained"
+          disabled={running}
+          onClick={() => {
+            props.setGrid(emptyGrid);
+            count = 0;
+          }}
+        >
+          Adjust Grid Size
+        </Button>
       </form>
     </div>
   );
