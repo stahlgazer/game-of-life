@@ -127,7 +127,7 @@ function Buttons(props) {
       </form>
       <form>
         <FormLabel style={{ margin: "10px" }}>Amount of Rows</FormLabel>
-        <Select value={props.rowSize} onChange={props.handleRow}>
+        <Select value={props.rowSize} onChange={props.handleRow} disabled={running}>
           <MenuItem value={20}>20</MenuItem>
           <MenuItem value={25}>25</MenuItem>
           <MenuItem value={30}>30</MenuItem>
@@ -135,7 +135,7 @@ function Buttons(props) {
           <MenuItem value={40}>40</MenuItem>
         </Select>
         <FormLabel style={{ margin: "10px" }}>Amount of Columns</FormLabel>
-        <Select value={props.colSize} onChange={props.handleCol}>
+        <Select value={props.colSize} onChange={props.handleCol} disabled={running}>
           <MenuItem value={20}>20</MenuItem>
           <MenuItem value={25}>25</MenuItem>
           <MenuItem value={30}>30</MenuItem>
@@ -153,7 +153,7 @@ function Buttons(props) {
             count = 0;
           }}
         >
-          Adjust Grid Size
+          Update Grid Size
         </Button>
       </form>
     </div>
