@@ -8,7 +8,7 @@ Game of Life
 * An empty cell represents a dead cell, while a filled cell is a live cell. Your cell's survival is reliant on its neighbors and position on the grid. First select cells to start with that are alive, or choose the 'randomize cells' button. Check out the different settings and experiment with different configurations to see what kind of results you come up with, then sit back and watch. Check out the rules to see what will make your cells live or die so that you can choose wisely. 
 
 ## Getting Started
-No login or registration is required, simply browse and enjoy on a desktop, tablet, or smartphone. This App uses https://www.themoviedb.org API in order to generate data.
+No login or registration is required, simply browse and enjoy on a desktop, tablet, or smartphone.
 
 ## View Demo
 * https://game-of-life-smoky-zeta.vercel.app/
